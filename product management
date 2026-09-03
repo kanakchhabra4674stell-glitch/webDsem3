@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Management</title>
+</head>
+
+<body>
+
+    <h2>Online Shopping Product Management</h2>
+
+    <button onclick="showProduct()">Show Product Details</button>
+    <button onclick="updateQuantity()">Update Quantity</button>
+    <button onclick="showTotal()">Calculate Total Price</button>
+
+    <p id="output"></p>
+
+    <script>
+
+        // User-defined object
+        let product = {
+
+            productId: 101,
+            productName: "Laptop",
+            price: 50000,
+            quantity: 2,
+
+            // Method to calculate total price
+            calculateTotal: function() {
+                return this.price * this.quantity;
+            },
+
+            // Method to update quantity
+            updateQuantity: function(newQuantity) {
+                this.quantity = newQuantity;
+            },
+
+            // Method to display product details
+            displayDetails: function() {
+                return `
+                    Product ID: ${this.productId}<br>
+                    Product Name: ${this.productName}<br>
+                    Price: ₹${this.price}<br>
+                    Quantity: ${this.quantity}<br>
+                    Total Price: ₹${this.calculateTotal()}
+                `;
+            }
+        };
+
+        // Display product details
+        function showProduct() {
+            document.getElementById("output").innerHTML =
+                product.displayDetails();
+        }
+
+        // Update quantity
+        function updateQuantity() {
+
+            let newQuantity = prompt("Enter new quantity:");
+
+            if (newQuantity > 0) {
+                product.updateQuantity(Number(newQuantity));
+
+                document.getElementById("output").innerHTML =
+                    "Quantity updated successfully!<br><br>" +
+                    product.displayDetails();
+            }
+            else {
+                document.getElementById("output").innerHTML =
+                    "Please enter a valid quantity.";
+            }
+        }
+
+        // Calculate total
+        function showTotal() {
+
+            let total = product.calculateTotal();
+
+            document.getElementById("output").innerHTML =
+                "Total Price = ₹" + total;
+        }
+
+    </script>
+
+</body>
+</html>
