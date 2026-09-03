@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank Account Management</title>
+</head>
+
+<body>
+
+    <h2>Bank Account Management System</h2>
+
+    <button onclick="depositMoney()">Deposit</button>
+    <button onclick="withdrawMoney()">Withdraw</button>
+    <button onclick="showBalance()">Display Balance</button>
+    <button onclick="showAccount()">Display Account Details</button>
+
+    <p id="output"></p>
+
+    <script>
+
+        // User-defined Bank Account object
+        let bankAccount = {
+
+            accountHolderName: "Kanak",
+            accountNumber: "1234567890",
+            accountBalance: 10000,
+
+            // Deposit method
+            deposit: function(amount) {
+
+                if (amount > 0) {
+                    this.accountBalance += amount;
+
+                    return "₹" + amount +
+                           " deposited successfully.";
+                }
+                else {
+                    return "Enter a valid amount.";
+                }
+            },
+
+            // Withdraw method
+            withdraw: function(amount) {
+
+                if (amount > this.accountBalance) {
+
+                    return "Insufficient Balance";
+
+                }
+                else if (amount <= 0) {
+
+                    return "Enter a valid amount.";
+
+                }
+                else {
+
+                    this.accountBalance -= amount;
+
+                    return "₹" + amount +
+                           " withdrawn successfully.";
+                }
+            },
+
+            // Display balance
+            displayBalance: function() {
+
+                return "Current Balance: ₹" +
+                       this.accountBalance;
+            },
+
+            // Display complete account details
+            displayDetails: function() {
+
+                return `
+                    Account Holder Name: ${this.accountHolderName}<br>
+                    Account Number: ${this.accountNumber}<br>
+                    Account Balance: ₹${this.accountBalance}
+                `;
+            }
+        };
+
+
+        // Deposit function
+        function depositMoney() {
+
+            let amount = prompt("Enter amount to deposit:");
+
+            amount = Number(amount);
+
+            let message = bankAccount.deposit(amount);
+
+            document.getElementById("output").innerHTML =
+                message + "<br>" +
+                bankAccount.displayBalance();
+        }
+
+
+        // Withdraw function
+        function withdrawMoney() {
+
+            let amount = prompt("Enter amount to withdraw:");
+
+            amount = Number(amount);
+
+            let message = bankAccount.withdraw(amount);
+
+            document.getElementById("output").innerHTML =
+                message + "<br>" +
+                bankAccount.displayBalance();
+        }
+
+
+        // Display balance
+        function showBalance() {
+
+            document.getElementById("output").innerHTML =
+                bankAccount.displayBalance();
+        }
+
+
+        // Display account details
+        function showAccount() {
+
+            document.getElementById("output").innerHTML =
+                bankAccount.displayDetails();
+        }
+
+    </script>
+
+</body>
+</html>
