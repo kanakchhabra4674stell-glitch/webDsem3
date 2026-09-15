@@ -1,0 +1,75 @@
+//constructor in js is different from other programming languages. In js, constructor is a special method of a class that is called when an object is created. It is used to initialize the properties of the object. The constructor method is defined using the `constructor` keyword and can take parameters to set the initial values of the object's properties.
+//here it is not to have same name as class name. In js, we can have any name for the constructor method. It is not necessary to have the same name as the class name. The constructor method is called automatically when an object is created using the `new` keyword. It is used to set the initial values of the object's properties and perform any other setup tasks that are required when the object is created.
+//class hello{
+
+    //constructor(){
+    //console.log("hello constructor");
+    //}
+    //let h=new hello();
+    //let h1=new hello();
+//     constructor(name){
+//         let empname;
+//         this.empname=name;
+//         console.log(this.empname);
+//     }
+
+// }
+//let h1=new hello();ye line error show karegi cause humne constructor parameterized banaya hai but call karte timel ya object banate time humne usko paramertized content(argument ni diya) , tabhi vo ek parameterized constructor ko call ni karega aur error aaiyegi
+// let h=new hello("kanak");//object creation using new keyword. When the object is created, the constructor method is called automatically and the message "hello constructor" is printed to the console.
+// let h2=new hello("priya");object2 
+//class hello{
+    //cant use let ,kyu??
+    //constructor(){
+//this.faculty="vikas";
+//console.log("hello constructor");
+  //  }
+//}
+//let h=new hello();
+// console.log(h.faculty);
+
+// class student {
+//     constructor(roll,name,year){
+//         this.rollno=roll;
+//         this.Name=name;
+//         this.Year=year;
+//         console.log(this.rollno);
+//         console.log(this.Name);
+//         console.log(this.Year);
+//     }
+//     display(){
+//         console.log(this.rollno);
+//         console.log(this.Name);
+//         console.log(this.Year);
+//     }
+// }
+// let s1=new student();//will show error output mai undefined aaiyega
+// let s2=new student(101,"kanak","2nd");
+// let s3=new student(102,"priya","3rd");
+// s1.display();//undefined values aaingi
+// s2.display();
+// s3.display();
+
+
+// class student{
+//     fname="kanak";
+//     lname="chhabra";
+//     static display()
+// {
+// console.log(this.fname);
+// console.log(this.lname);
+//     }
+// }
+// let s=new student();
+// s.display();//undefined values aaingi cause static method can not access non static properties of class. Static methods are called on the class itself, rather than on instances of the class. They are often used for utility functions that don't require access to instance-specific data.
+class student{
+   static fname="kanak";
+    //static keywords are very important 
+    static lname="chhabra";
+     display()
+{
+    //console.log(this.fname);//undefined cause static methods can not access non static properties of class. 
+console.log(student.fname);//static methods can access static properties of class using class name. 
+    }
+}
+let s=new student();
+s.display();
