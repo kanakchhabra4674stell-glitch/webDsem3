@@ -1,0 +1,28 @@
+class Employee {
+    constructor(id, name, basicSalary) {
+        this.id = id;
+        this.name = name;
+        this.basicSal = basicSalary;
+    }
+
+    calculateSalary() {
+        return this.basicSal;
+    }
+}
+
+class Manager extends Employee {
+    constructor(id, name, basicSal, incentive) {
+        super(id, name, basicSal);
+        this.incentive = incentive;
+    }
+
+    calculateSalary() {
+        return this.basicSal + this.incentive;
+    }
+}
+
+let e1 = new Employee(101, "Amit", 30000);
+let m1 = new Manager(102, "Tanvi", 50000, 10000);
+
+console.log("Employee Salary:", e1.calculateSalary());
+console.log("Manager Salary:", m1.calculateSalary());
