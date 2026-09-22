@@ -1,0 +1,48 @@
+class Vehicle {
+    constructor(vehicleNo, driverName, distance) {
+        this.vehicleNo = vehicleNo;
+        this.driverName = driverName;
+        this.distance = distance;
+    }
+    calculateFare() {
+        return 0;
+    }
+    static displayPlatform() {
+        console.log("Booking Platform: QuickRide");
+    }
+
+    displayDetails() {
+        console.log("Vehicle No: " , this.vehicleNo);
+        console.log("Driver Name: " , this.driverName);
+        console.log("Distance: " , this.distance + " km");
+    }
+}
+class Car extends Vehicle {
+    constructor(vehicleNo, driverName, distance) {
+        super(vehicleNo, driverName, distance);
+    }
+    calculateFare() {
+        return this.distance * 15;
+    }
+}
+class Bike extends Vehicle {
+    constructor(vehicleNo, driverName, distance) {
+        super(vehicleNo, driverName, distance);
+    }
+    calculateFare() {
+        return this.distance * 8;
+    }
+}
+Vehicle.displayPlatform();
+
+let car = new Car("CAR101", "Rahul", 20);
+
+console.log("\n--- Car Details ---");
+car.displayDetails();
+console.log("Fare: Rs. " + car.calculateFare());
+
+let bike = new Bike("BIKE202", "Aman", 15);
+
+console.log("\n--- Bike Details ---");
+bike.displayDetails();
+console.log("Fare: Rs. " + bike.calculateFare());
